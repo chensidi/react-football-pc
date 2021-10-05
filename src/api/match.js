@@ -5,6 +5,10 @@ const matchApi = {
         const res = await http.get(`/match/getMatchMenuPc`)
         return res.data.data.list
     },
+    async getMatchList(type, startTime) {
+        const res = await http.post('/match/getMatchListPc', {type, startTime})
+        return res.data.list;
+    },
     async getSituation(matchId) {
         const res = await http.get(`/match/getSituation`, {
             matchId

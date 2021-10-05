@@ -1,11 +1,18 @@
 import { Menu } from 'antd';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 
 import matchApi from '@/api/match';
 import HttpGet from '@/components/Http/Get';
 
 const SideNav = (props) => {
     const { list = [] } = props;
+    const history = useHistory();
+
+    const jumpRoute = (item) => {
+        console.log(item);
+        history.replace('/live/' + (item.league_id || item.id));
+    }
 
     return (
         <Menu
@@ -14,7 +21,7 @@ const SideNav = (props) => {
             mode="inline"
         >
             {
-                list.map(item => <Menu.Item key={item.id}>{ item.label }</Menu.Item>)
+                list.map(item => <Menu.Item onClick={() => jumpRoute(item)} key={item.id}>{ item.label }</Menu.Item>)
             }
       </Menu>
     )

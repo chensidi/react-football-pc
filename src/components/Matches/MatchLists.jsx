@@ -74,28 +74,32 @@ const ListWrap = ({list = []}) => {
     )
 }
 
-const MatchLists = () => {
+const MatchLists = ({method, dataList = []}) => {
 
     //获取重要比赛列表
     const [list, setList] = useState([]);
-    const getImportantMatches = useCallback(() => {
-        homeApi.getImportant().then(res => {
-            const summaryList = summaryMatchList(res);
-            const tempList = [];
-            Object.keys(summaryList).map(item => {
-                const tempObj = {
-                    date: item,
-                    sublist: summaryList[item]
-                }
-                tempList.push(tempObj)
-            })
-            setList(tempList);
+    const getImportantMatches = useCallback(async () => {
+        let res;
+        if (method) {
+            res = await method();
+        } else {
+            res = await homeApi.getImportant();
+        }
+        const summaryList = summaryMatchList(res);
+        const tempList = [];
+        Object.keys(summaryList).map(item => {
+            const tempObj = {
+                date: item,
+                sublist: summaryList[item]
+            }
+            tempList.push(tempObj)
         })
-    }, [])
+        setList(tempList);
+    })
 
     useEffect(() => {
         getImportantMatches();
-    }, []);
+    }, [method]);
 
     return (
         <>

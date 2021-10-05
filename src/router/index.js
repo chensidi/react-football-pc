@@ -12,7 +12,13 @@ export default [
         component: lazy(() => import('@pages/Home/Home'))
     },
     {
-        path: '/live/:id',
-        component: lazy(() => import('@pages/Live/Live'))
+        path: '/live',
+        component: lazy(() => import('@pages/Live/Live')),
+        routes: [
+            {
+                path: '/live/:id',
+                component: lazy(() => import('@pages/Live/Content'))
+            }
+        ]
     }
 ]

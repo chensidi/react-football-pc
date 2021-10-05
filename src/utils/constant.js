@@ -9,7 +9,7 @@ export const navs = [
     },
     {
         label: '德甲',
-        path: '/live/10'
+        path: '/live/5'
     },
     {
         label: '动态',

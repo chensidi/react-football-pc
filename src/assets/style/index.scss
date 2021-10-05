@@ -528,3 +528,12 @@ footer.footer-wrap {
         margin-bottom: 25px;
     }
 }
+
+.match-wrap {
+    @include flex(space-between, wrap, flex-start);
+}
+
+.match-content {
+    flex: 1;
+    margin-left: 20px;
+}
