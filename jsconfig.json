@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+        "@/*": ["src/*"],
+        "@components/*": ["src/components/*"],
+        "@pages/*": ["src/pages/*"],
+        "@utils/*": ["src/utils/*"],
+        "@assets/*": ["src/assets/*"],
+        "@store/*": ["src/store/*"],
+        "@router/*": ["src/router/*"],
+      },
+      "target": "ES6",
+      "module": "commonjs",
+      "jsx": "react",  // 重要！支持jsx文件，否则jsx文件无法跳转
+      "allowSyntheticDefaultImports": true
+    },
+    "include": [
+      "src/**/*"
+    ],
+    "exclude": ["node_modules"]
+  }

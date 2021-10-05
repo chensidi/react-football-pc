@@ -1,0 +1,5 @@
+node_modules
+dll
+yarn.lock
+.temp_cache
+football-pc

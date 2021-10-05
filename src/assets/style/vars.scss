@@ -1,0 +1,24 @@
+$white: #fff;
+$white1: #f2f2f2;
+
+$black: #000;
+$black1: #333;
+$black2: #666;
+$black3: #999;
+
+$green: #16b13a;
+
+$gray3: #898a89;
+
+@mixin elp {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin flex($jc:space-between, $fw: wrap, $ai: center) {
+    display: flex;
+    align-items: $ai;
+    justify-content: $jc;
+    flex-wrap: $fw;
+}

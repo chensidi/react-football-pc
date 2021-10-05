@@ -1,0 +1,530 @@
+@import './vars.scss';
+
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-style: normal;
+}
+
+.hd {
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 5px 10px #f0f0f0;
+    background: $white;
+    margin-bottom: 30px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    left: 0;
+    .hd-wrap {
+        width: 1300px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .logo {
+        width: 160px;
+        float: left;
+        margin-top: 10px;
+        margin-right: 50px;
+    }
+    .navs {
+        .itm {
+            width: 86px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            display: inline-block;
+            font-size: 18px;
+            text-decoration: none;
+            color: $black;
+            cursor: pointer;
+            position: relative;
+            &.active {
+                background: $green;
+                color: $white;
+            }
+        }
+    }
+}
+
+.main-wrap {
+    width: 1200px;
+    margin: 60px auto 0;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.match-itm {
+    width: 212px;
+    display: inline-block;
+    border: 1px solid $white1;
+    margin: 0 6px;
+    color: $black3;
+    font-size: 14px;
+    h4 {
+        padding: 8px;
+        color: $black3;
+    }
+}
+
+.match-state {
+    float: right;
+}
+
+.match-team {
+    color: #333;
+    font-size: 14px;
+    padding: 8px;
+    margin: 0;
+    position: relative;
+    img {
+        width: 24px;
+        margin-right: 4px;
+        display: inline-block !important;
+    }
+    em {
+        float: right;
+        font-weight: 600;
+    }
+    .time {
+        position: absolute;
+        text-align: center;
+        right: 8px;
+        top: 20px;
+        font-size: 14px;
+        time {
+            display: block;
+        }
+    }
+}
+
+.match-btn {
+    text-align: center;
+    border-top: 1px solid $white1;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+    background: $white;
+    font-size: 15px;
+    color: $green;
+}
+
+.my-match {
+    position: relative;
+    padding: 0 40px;
+    .nav-btn {
+        width: 40px;
+        height: 100%;
+        cursor: pointer;
+        background: $white1;
+        text-align: center;
+        font-size: 20px;
+        position: absolute;
+        top: 0;
+        .anticon {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &.lt{
+            left: 0;
+        }
+        &.rt {
+            right: 0;
+        }
+    }
+}
+
+.content {
+    width: 1200px;
+    min-height: 100vh;
+    margin: 20px auto 60px;
+    overflow: hidden;
+    .aside {
+        float: right;
+        width: 340px;
+    }
+    .main {
+        float: left;
+        margin-right: -340px;
+        width: 100%;
+        padding-right: 380px;
+    }
+}
+
+.new-cover {
+    width: 320px;
+    height: 240px;
+    background: #fafafa;
+    position: relative;
+    overflow: hidden;
+    > img {
+        width: 320px;
+        height: 240px;
+        display: block;
+    }
+    p {
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        text-indent: 12px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: rgba(0,0,0,.6);
+        color: #fff;
+        font-size: 16px;
+        @include elp;
+        margin: 0;
+    }
+}
+
+.top-cover {
+    float: left;
+    width: 320px;
+    overflow: hidden;
+    margin-right: 35px;
+}
+
+.top-list {
+    float: left;
+    margin-right: 0px;
+}
+
+.new-content {
+    width: 444px;
+    height: 255px;
+    overflow: hidden;
+    p {
+        line-height: 30px;
+        font-size: 16px;
+        color: $black1;
+        margin: 0;
+        &.head {
+            font-size: 20px;
+        }
+        a {
+            display: block;
+            text-decoration: none;
+            color: $black;
+            @include elp;
+        }
+    }
+}
+
+.side-block {
+    height: 70px;
+    margin-bottom: 15px;
+    @include flex(space-between, wrap ,flex-start);
+    img {
+        width: 100px;
+        height: 70px;
+        overflow: hidden;
+        margin-right: 20px;
+    }
+    p {
+        flex: 1;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 6px;
+        line-height: 22px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        color: $black1;
+    }
+}
+
+.side-wrap {
+    /* margin-bottom: 15px;
+    overflow: hidden; */
+}
+
+.article-title {
+    font-size: 20px;
+    @include elp;
+    display: block;
+    color: $black;
+    text-decoration: none;
+}
+
+.vdo-item {
+    @include elp;
+    display: block;
+    color: $black;
+    line-height: 31px;
+    .ply-btn {
+        width: 20px;
+        margin-right: 8px;
+        position: relative;
+    }
+}
+
+.pannel-tit {
+    height: 40px;
+    border-bottom: 1px solid $white1;
+    @include flex();
+    .tit-txt {
+        width: 110px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: $white;
+        font-size: 20px;
+        background: url('/public/imgs/tit-bg.png') no-repeat;
+    }
+    a {
+        font-weight: 400;
+        color: $green;
+        text-decoration: none;
+        margin-right: 18px;
+    }
+}
+
+.ant-tabs-tab + .ant-tabs-tab {
+    margin: 0 0 0 30px;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $green;
+}
+
+.ant-tabs-ink-bar {
+    background: $green;
+}
+
+.sub-tit {
+    margin-bottom: 16px;
+    @include flex();
+    span {
+        width: 50%;
+        text-align: center;
+        cursor: pointer;
+        &.on {
+            color: $green;
+        }
+    }
+}
+
+.pannel-tb {
+    h4 {
+        span {
+            display: inline-block;
+            color: $black2;
+        }
+        .rank {
+            width: 60px;
+            text-align: center;
+        }
+        .player{
+            width: 115px;
+            text-align: left;
+            text-indent: 24px;
+        }
+        .team {
+            width: 110px;
+            text-align: left;
+            text-indent: 10px;
+        }
+        .goal {
+            width: 50px;
+            text-align: left;
+        }
+    }
+
+    .team-item {
+        color: #000;
+        display: block;
+        overflow: hidden;
+        height: 45px;
+        line-height: 45px;
+        span {
+            display: inline-block;
+            font-size: 14px;
+            @include elp;
+            float: left;
+        }
+        .rank {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin: 12px 16px 0;
+            border-radius: 2px;
+            &.top {
+                background: $green;
+                color: #fff;
+            }
+        }
+        .player{
+            width: 130px;
+            img {
+                float: left;
+                margin-top: 10px;
+                margin-right: 6px;
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                overflow: hidden;
+            }
+        }
+        .team {
+            width: 100px;
+            text-indent: 10px;
+        }
+        .goal {
+            width: 40px;
+            text-align: center;
+        }
+    }
+}
+
+.pannel-wrap {
+    background: $white1;
+}
+
+.video-wrap {
+    @include flex;
+    margin-top: 20px;
+}
+
+.vdo-cover {
+    width: 188px;
+    img {
+        display: block;
+        height: 105px;
+        width: 100%;
+        object-fit: cover;
+    }
+    p {
+        font-size: 14px;
+        color: $black2;
+        margin-top: 6px;
+        @include elp;
+    }
+}
+
+.label-tit {
+    line-height: 50px;
+    border-bottom: 1px solid $white1;
+    margin-bottom: 10px;
+    img {
+        width: 14px;
+        position: relative;
+        margin-right: 5px;
+    }
+}
+
+.recommend-item {
+    width: 100%;
+    text-decoration: none;
+    color: $black;
+    display: block;
+    @include elp;
+    line-height: 40px;
+}
+
+.match-tit {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #f2f2f2;
+    .tit-txt {
+        display: inline-block;
+        width: 110px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: $white;
+        font-size: 20px;
+        background: url(/public/imgs/tit-bg.png) no-repeat;
+    }   
+}
+
+.time-label {
+    line-height: 60px;
+    font-size: 16px;
+    margin: 0;
+    img {
+        width: 12px;
+        float: left;
+        margin: 20px 10px 0 0;
+    }
+}
+
+.match-item {
+    position: relative;
+    color: $black;
+    @include flex(flex-start);
+    .match-time {
+        width: 75px;
+        text-indent: 22px;
+        @include elp;
+    }
+    .league-name {
+        width: 110px;
+        @include elp;
+        text-align: center;
+    }
+    .team-a, .team-b {
+        width: 132px;
+        // text-align: right;
+        display: inline-block;
+        @include elp;
+        img {
+            width: 26px;
+            margin: 0 5px;
+        }
+    }
+    .team-a {
+        text-align: right;
+    }
+    .team-b {
+        text-align: left;
+    }
+    .score {
+        margin: 0 10px;
+    }
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    overflow: hidden;
+    &:nth-child(2n) {
+        background: #f7f7f7;
+    }
+    .live-tag {
+        color: $green;
+        position: absolute;
+        right: 10px;
+    }
+}
+
+footer.footer-wrap {
+    width: 100%;
+    box-shadow: 0 2px 20px $white1;
+    background: $black1;
+    color: $gray3;
+    overflow: hidden;
+    padding: 50px 0;
+    font-size: 14px;
+    text-align: center;
+    h2 {
+        color: $white;
+    }
+}
+
+.back-top {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 100px;
+    height: 300px;
+    text-align: center;
+    z-index: 1000;
+    img {
+        width: 100px;
+        margin-bottom: 25px;
+    }
+}
