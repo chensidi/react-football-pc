@@ -1,28 +1,32 @@
 import matchApi from '@/api/match';
 import MatchLists from '@components/Matches/MatchLists';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { getParams, timeDetails } from '@utils/utils';
+
+import { useEffect, useMemo, useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+
 
 const MatchContent = () => {
     
     const { id } = useParams();
-    const orgFn = () => {
-        return () => matchApi.getMatchList(id, '2021-10-0516:00:00')
-    }
-    const [getMatchList, setFn] = useState(orgFn)
+    const { search } = useLocation();
+    const [getMatchList, setFn] = useState(() => {
+        return () => new Promise(() => {})
+    }); //请求函数
 
     const sid = useMemo(() => id)
     useEffect(() => {
         setFn(() => {
-            let id = sid;
-            return () => matchApi.getMatchList(id == 10 ? 'important' : id, '2021-10-0516:00:00')
+            const { year, month, day } = timeDetails(Date.now());
+            let apiFn = matchApi.getMatchListByApiPc(getParams(search, 'api'), `${year}-${month}-${day}16:00:00`);
+            return () => apiFn;
         })
     }, [sid])
 
     return (
-        <div>
+        <>
             <MatchLists method={getMatchList} sid={sid} />
-        </div>
+        </>
     )
 }
 

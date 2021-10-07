@@ -5,11 +5,11 @@ export const navs = [
     },
     {
         label: '中超',
-        path: '/live'
+        path: '/live/13?api=https://api.dongqiudi.com/data/tab/league/new/43'
     },
     {
         label: '德甲',
-        path: '/live/5'
+        path: '/live/3?api=https://api.dongqiudi.com/data/tab/league/new/5'
     },
     {
         label: '动态',
@@ -21,7 +21,7 @@ export const navs = [
     },
     {
         label: '直播',
-        path: '/live'
+        path: '/live/0?api=https://api.dongqiudi.com/data/tab/new/important'
     },
     {
         label: '数据',

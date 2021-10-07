@@ -46,3 +46,8 @@ export function summaryMatchList(list = []) {
     })
     return formatList;
 }
+
+export function getParams(paramStr, key) {
+    const qsStr = new URLSearchParams(paramStr);
+    return qsStr.get(key);
+}

@@ -1,8 +1,10 @@
 import homeApi from '@/api/home';
 import { summaryMatchList, timeDetails, toEastTime } from '@utils/utils';
+import SkeletonHoc from '@components/Common/CustomSkeleton';
 
 import { useCallback, useEffect, useState, Fragment } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { message } from 'antd';
 
 const MatchTitle = () => {
     return (
@@ -74,12 +76,20 @@ const ListWrap = ({list = []}) => {
     )
 }
 
-const MatchLists = ({method, dataList = []}) => {
+const MatchLists = ({method, dataList = [], loadingRef}) => {
 
     //获取重要比赛列表
     const [list, setList] = useState([]);
     const getImportantMatches = useCallback(async () => {
         let res;
+        message.loading({
+            content: '加载中...',
+            duration: 0,
+            key: 'matchload',
+            style: {
+                marginTop: '20vh'
+            }
+        })
         if (method) {
             res = await method();
         } else {
@@ -95,6 +105,7 @@ const MatchLists = ({method, dataList = []}) => {
             tempList.push(tempObj)
         })
         setList(tempList);
+        message.destroy('matchload')
     })
 
     useEffect(() => {
@@ -119,4 +130,4 @@ const MatchLists = ({method, dataList = []}) => {
     )
 }
 
-export default MatchLists;
+export default (MatchLists);

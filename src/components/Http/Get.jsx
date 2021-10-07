@@ -1,10 +1,13 @@
 import { useEffect, useState, cloneElement } from 'react';
 import { useDispatch } from 'react-redux';
-import { Skeleton } from 'antd';
+import { Skeleton, message } from 'antd';
 
-const LoadingDefault = () => {
+const LoadingDefault = ({width, height, rows}) => {
+    console.log(width)
     return (
-        <Skeleton loading={true} active></Skeleton>
+        <div style={{width, height}}>
+            <Skeleton loading={true} active paragraph={{rows}}></Skeleton>
+        </div>
     )
 }
 
@@ -12,7 +15,6 @@ const HttpGet = (props) => {
     let {
         method,
         delay = 0,
-        loading = <LoadingDefault />,
         error,
         children,
         attr,
@@ -20,7 +22,9 @@ const HttpGet = (props) => {
             type,
             prop,
             storeData
-        }
+        },
+        style,
+        loading = <LoadingDefault {...style} />,
     } = props;
     const [Comp, setComp] = useState(null);
     const dispatch = useDispatch();
