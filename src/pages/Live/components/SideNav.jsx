@@ -11,7 +11,6 @@ let unlisten;
 const SideNav = (props) => {
     const { list = [] } = props;
     const history = useHistory();
-    console.log(history.location.pathname.match(/(?<=\/)\d+$/)[0])
 
     const jumpRoute = (item, idx) => {
         setDkey(idx.toString());
@@ -20,14 +19,17 @@ const SideNav = (props) => {
     
     const defaultKey = history.location.pathname.match(/(?<=\/)\d+$/)[0];
     const [dKey, setDkey] = useState(defaultKey);
-    console.log(history);
-    
 
     useEffect(() => {
         unlisten = history.listen(() => {
-            setDkey(history.location.pathname.match(/(?<=\/)\d+$/)[0]);
+            console.log('listen')
+            try {
+                setDkey(history.location.pathname.match(/(?<=\/)\d+$/)[0]);
+            } catch (e) {
+                console.log(e)
+            }
         })
-        return unlisten()
+        return () => unlisten()
     }, [])
 
     return (

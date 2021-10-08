@@ -1,18 +1,13 @@
 import homeApi from '@/api/home';
 import { summaryMatchList, timeDetails, toEastTime } from '@utils/utils';
-import SkeletonHoc from '@components/Common/CustomSkeleton';
+import MoreNav from '@components/Common/MoreNav'
 
 import { useCallback, useEffect, useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { message } from 'antd';
-
-const MatchTitle = () => {
-    return (
-        <p className="match-tit">
-            <span className="tit-txt">比赛直播</span>
-        </p>
-    )
-}
+import { message, DatePicker } from 'antd';
+import 'moment/locale/zh-cn';
+import moment from 'moment';
+import locale from 'antd/es/date-picker/locale/zh_CN';
 
 const TimeLabel = ({date}) => {
     return (
@@ -76,7 +71,7 @@ const ListWrap = ({list = []}) => {
     )
 }
 
-const MatchLists = ({method, dataList = [], loadingRef}) => {
+const MatchLists = ({method, showPicker, onDateChange}) => {
 
     //获取重要比赛列表
     const [list, setList] = useState([]);
@@ -114,7 +109,11 @@ const MatchLists = ({method, dataList = [], loadingRef}) => {
 
     return (
         <>
-            <MatchTitle />
+            <MoreNav title="比赛直播">
+                {
+                    showPicker && <DatePicker onChange={onDateChange} locale={locale} defaultValue={moment()} />
+                }
+            </MoreNav>
             {
                 list.map(item => {
                     return (
@@ -125,7 +124,6 @@ const MatchLists = ({method, dataList = [], loadingRef}) => {
                     )
                 })
             }
-            
         </>
     )
 }

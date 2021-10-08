@@ -2,7 +2,7 @@ import matchApi from '@/api/match';
 import MatchLists from '@components/Matches/MatchLists';
 import { getParams, timeDetails } from '@utils/utils';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
 
@@ -21,11 +21,26 @@ const MatchContent = () => {
             let apiFn = matchApi.getMatchListByApiPc(getParams(search, 'api'), `${year}-${month}-${day}16:00:00`);
             return () => apiFn;
         })
+        setShowPicker(false);
+        setTimeout(() => setShowPicker(true))
+    }, [sid])
+
+    const [showPicker, setShowPicker] = useState(true);
+    const onDateChange = useCallback((val) => {
+        setFn(() => {
+            const { year, month, day } = timeDetails(new Date(val['_d']).getTime());
+            let apiFn = matchApi.getMatchListByApiPc(getParams(search, 'api'), `${year}-${month}-${day}16:00:00`);
+            return () => apiFn;
+        })
     }, [sid])
 
     return (
         <>
-            <MatchLists method={getMatchList} sid={sid} />
+            <MatchLists 
+                method={getMatchList} 
+                showPicker={showPicker} 
+                onDateChange={onDateChange}
+            />
         </>
     )
 }
