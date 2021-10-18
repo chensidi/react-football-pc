@@ -3,7 +3,7 @@ import http from './http'
 const matchApi = {
     async getMatchListByApiPc(api, start) {
         const res = await http.post(`/match/getMatchMenu`, {api, start})
-        return res.data.list
+        return res.data
     },
     async getMenu() {
         const res = await http.get(`/match/getMatchMenuPc`)

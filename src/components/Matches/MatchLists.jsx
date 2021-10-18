@@ -75,6 +75,7 @@ const MatchLists = ({method, showPicker, onDateChange}) => {
 
     //获取重要比赛列表
     const [list, setList] = useState([]);
+    const [nextDate, setNextDate] = useState('');
     const getImportantMatches = useCallback(async () => {
         let res;
         message.loading({
@@ -87,10 +88,17 @@ const MatchLists = ({method, showPicker, onDateChange}) => {
         })
         if (method) {
             res = await method();
+            // 如果有下一比赛日
+            res.nextDate && setNextDate(res.nextDate);
         } else {
             res = await homeApi.getImportant();
         }
-        const summaryList = summaryMatchList(res);
+        const summaryList = summaryMatchList(res.list);
+        setList(commonFn(summaryList));
+        message.destroy('matchload')
+    })
+
+    const commonFn = useCallback((summaryList) => {
         const tempList = [];
         Object.keys(summaryList).map(item => {
             const tempObj = {
@@ -99,9 +107,17 @@ const MatchLists = ({method, showPicker, onDateChange}) => {
             }
             tempList.push(tempObj)
         })
-        setList(tempList);
-        message.destroy('matchload')
-    })
+        return tempList;
+    }, [])
+
+    //加载更多
+    async function loadMore() {
+        const res = await method(nextDate);
+        // 如果有下一比赛日
+        setNextDate(res.nextDate || '');
+        const summaryList = summaryMatchList(res.list);
+        setList(pre => pre.concat(commonFn(summaryList)));
+    }
 
     useEffect(() => {
         getImportantMatches();
@@ -123,6 +139,13 @@ const MatchLists = ({method, showPicker, onDateChange}) => {
                         </Fragment>
                     )
                 })
+            }
+            {
+                list.length ? (
+                    <div className="load-more" onClick={loadMore}>
+                        点击加载更多
+                    </div>
+                ) : null
             }
         </>
     )

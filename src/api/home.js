@@ -45,7 +45,7 @@ const homeApi = {
     },
     async getImportant() {
         const res = await http.get('/home/getImportantMatch');
-        return res.data.list;
+        return res.data;
     }
 }
 

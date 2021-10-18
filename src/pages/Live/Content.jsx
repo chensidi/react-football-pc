@@ -19,7 +19,12 @@ const MatchContent = () => {
         setFn(() => {
             const { year, month, day } = timeDetails(Date.now());
             let apiFn = matchApi.getMatchListByApiPc(getParams(search, 'api'), `${year}-${month}-${day}16:00:00`);
-            return () => apiFn;
+            return (time) => {
+                if (time) {
+                    apiFn = matchApi.getMatchListByApiPc(getParams(search, 'api'), time);
+                }
+                return apiFn;
+            }
         })
         setShowPicker(false);
         setTimeout(() => setShowPicker(true))

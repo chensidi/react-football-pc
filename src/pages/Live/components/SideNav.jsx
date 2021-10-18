@@ -38,6 +38,7 @@ const SideNav = (props) => {
             defaultSelectedKeys={[dKey]}
             mode="inline"
             selectedKeys={[dKey]}
+            className="match-side"
         >
             {
                 list.map((item, i) => <Menu.Item onClick={() => jumpRoute(item, i)} key={i}>{ item.label }</Menu.Item>)
