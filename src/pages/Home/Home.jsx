@@ -18,7 +18,7 @@ import videoApi from '@/api/video';
 //此处四个组件是在第二屏范围，所以无需急于渲染，懒加载即可
 const MatchLists = lazy(() => import('@components/Matches/MatchLists'))
 const ScorePannel = lazy(() => import('./components/ScorePannel'))
-const HotVideo = lazy(() => import('./components/HotVideo'))
+const HotVideo = lazy(() => import('../../components/Common/HotVideo'))
 const RecommendWrap = lazy(() => import('./components/Recommend'))
 
 function memoHoc(memo, setFn, fn) {
@@ -62,7 +62,7 @@ export default () => {
 
     const [hotVideo, setHotVideo] = useState([]);
     const getHotVideo = useCallback(() => { //获取热门视频
-        videoApi.getHotVideoList().then(res => {
+        videoApi.getHotVideo().then(res => {
             setHotVideo(res.articles.slice(0, 8));
             dispatch({type: 'setHotVideos', hotVideos: res.articles.slice(0, 8)})
         })

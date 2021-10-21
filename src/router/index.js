@@ -20,5 +20,10 @@ export default [
                 component: lazy(() => import('@pages/Live/Content'))
             }
         ]
+    },
+    {
+        path: '/video',
+        component: lazy(() => import('@pages/Video/VideoHome')),
+        exact: true
     }
 ]

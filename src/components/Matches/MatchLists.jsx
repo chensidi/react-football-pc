@@ -71,8 +71,7 @@ const ListWrap = ({list = []}) => {
     )
 }
 
-const MatchLists = ({method, showPicker, onDateChange}) => {
-
+const MatchLists = ({method, showPicker, onDateChange, needLoad=false}) => {
     //获取重要比赛列表
     const [list, setList] = useState([]);
     const [nextDate, setNextDate] = useState('');
@@ -141,7 +140,7 @@ const MatchLists = ({method, showPicker, onDateChange}) => {
                 })
             }
             {
-                list.length ? (
+                (list.length && needLoad) ? (
                     <div className="load-more" onClick={loadMore}>
                         点击加载更多
                     </div>

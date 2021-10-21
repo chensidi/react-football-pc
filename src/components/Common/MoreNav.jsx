@@ -9,11 +9,11 @@ export default function({title="", children}) {
     )
 }
 
-export function LabelTitle() {
+export function LabelTitle({title="热门推荐"}) {
     return (
         <div className="label-tit">
             <img src={require('/public/imgs/title-pre-icon.png')} alt="" />
-            热门推荐
+            { title }
         </div>
     )
 }

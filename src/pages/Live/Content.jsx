@@ -45,6 +45,7 @@ const MatchContent = () => {
                 method={getMatchList} 
                 showPicker={showPicker} 
                 onDateChange={onDateChange}
+                needLoad
             />
         </>
     )

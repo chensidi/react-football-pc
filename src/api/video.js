@@ -8,8 +8,18 @@ export default {
         return res.data;
     },
 
-    async getHotVideoList() {
+    async getHotVideo() {
         const res = await http.get('/video/getHotVideo');
         return res.data;
-    }
+    },
+
+    async getTabVideoList() {
+        const res = await http.get('/video/getTabVideoList');
+        return res.data.data;
+    },
+
+    async getHotVideoList() {
+        const res = await http.get('/video/getHotVideoList');
+        return res.data.data;
+    },
 }
