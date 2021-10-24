@@ -25,5 +25,9 @@ export default [
         path: '/video',
         component: lazy(() => import('@pages/Video/VideoHome')),
         exact: true
+    },
+    {
+        path: '/article/:id',
+        component: lazy(() => import('@pages/Article/Article'))
     }
 ]

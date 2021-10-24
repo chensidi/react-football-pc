@@ -5,7 +5,7 @@ import ArticleTitle from '@/components/Common/ArticleTitle';
 
 export const NewCover = memo(({className, info = {}}) => {
     return (
-        <Link to="" className={`new-cover ${className||''}`}>
+        <Link to={`/article/${info.id}`} className={`new-cover ${className||''}`}>
             <img src={info.thumb} alt="" />
             <p>{ info.title }</p>
         </Link>
@@ -23,7 +23,7 @@ export const NewLists = memo(({className, list = []}) => {
                         key={item.id}
                         title={item.title}
                     >
-                        <Link to="">
+                        <Link to={`/article/${item.id}`}>
                             { item.title }
                         </Link>
                     </p>
